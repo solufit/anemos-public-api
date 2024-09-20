@@ -1,0 +1,44 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "shiron system からユーザーチェインの紐づけ情報を使って各種リソース(webhock / Email / discord / slack)へ通知を送信するためのAPIです。",
+        "title": "shiron notice API",
+        "contact": {},
+        "version": "v0.1.0"
+    },
+    "host": "localhost:8080",
+    "paths": {
+        "/v1/version": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "version"
+                ],
+                "summary": "バージョン管理",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/version.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "version.Response": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

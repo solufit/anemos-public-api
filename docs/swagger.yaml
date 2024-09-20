@@ -1,0 +1,29 @@
+definitions:
+  version.Response:
+    properties:
+      status:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: shiron system からユーザーチェインの紐づけ情報を使って各種リソース(webhock / Email / discord
+    / slack)へ通知を送信するためのAPIです。
+  title: shiron notice API
+  version: v0.1.0
+paths:
+  /v1/version:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/version.Response'
+      summary: バージョン管理
+      tags:
+      - version
+swagger: "2.0"
