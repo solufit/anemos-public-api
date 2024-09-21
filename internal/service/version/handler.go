@@ -17,7 +17,7 @@ type Response struct {
 // @Router /v1/version [get]
 func (h *VersionHandler) V1Version(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
-		"Rerease": "2024-09-19",
+		"Release": "2024-09-19",
 	})
 }
 
