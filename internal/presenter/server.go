@@ -18,7 +18,7 @@ func (s *Server) Run(ctx context.Context) error {
 	// バージョン管理
 	{
 		versionHandler := version.NewVersionHandler()
-		v1.GET("/v1/version", versionHandler.V1Version)
+		v1.GET("/version", versionHandler.V1Version)
 	}
 
 	err := r.Run()
