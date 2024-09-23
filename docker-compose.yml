@@ -9,8 +9,8 @@ services:
     command: /bin/bash
     volumes:
       - ./..:/go/src/work
-    ports:
-      - "6000:8000"
+    expose:
+      - 8000
     environment:
       DATABASE_URL: mysql://root:root@db:3306/database
       GO111MODULE: on

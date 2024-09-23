@@ -2,7 +2,8 @@ package presenter
 
 import (
 	"context"
-	"solufit/go/internal/service/version"
+	version "solufit/go/internal/service/version"
+	weather "solufit/go/internal/service/weather" // Add this import
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,6 +20,11 @@ func (s *Server) Run(ctx context.Context) error {
 	{
 		versionHandler := version.NewVersionHandler()
 		v1.GET("/version", versionHandler.V1Version)
+	}
+	{
+		weatherHandler := weather.NewWeatherHandler()
+		v1.POST("/weather/info", weatherHandler.GetWeatherInfoNear)
+		v1.POST("/weather/info/past", weatherHandler.GetWeatherInfoPast)
 	}
 
 	err := r.Run()
