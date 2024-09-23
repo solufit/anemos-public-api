@@ -74,8 +74,49 @@ type WeatherInfo struct {
 // @Accept json
 // @Produce json
 // @Success 200 {object} WeatherInfo
-// @Router /v1/version [get]
+// @Router /v1/weather/info [get]
 func (h *WeatherHandler) GetWeatherInfoNear(ctx *gin.Context) {
+	var filter WeatherInfoFilter
+	if err := ctx.BindJSON(&filter); err != nil {
+		return
+	}
+
+	var weatherinfo = []WeatherInfo{
+		{
+			ID:         "1",
+			ObjectType: "weather",
+			Areacode:   "123-4567",
+			Title:      "気象情報",
+			Status:     "success",
+			Detail: DetailWeatherForecast{
+				WeatherToday:    "晴れ",
+				WeatherTomorrow: "晴れ",
+
+				MaxTemp:        30,
+				MinTemp:        20,
+				RainPercentNow: 0,
+				RainPercent6h:  0,
+				RainPercent12h: 0,
+				RainPercent18h: 0,
+				RainPercent24h: 0,
+			},
+			ReportedAt:   "2024-09-19",
+			InfoDomain:   "weather",
+			InfoObjectId: "1",
+		},
+	}
+
+	ctx.IndentedJSON(http.StatusOK, weatherinfo)
+}
+
+// Version godoc
+// @Summary 気象情報
+// @Tags weather
+// @Accept json
+// @Produce json
+// @Success 200 {object} WeatherInfo
+// @Router /v1/weather/info/past [get]
+func (h *WeatherHandler) GetWeatherInfoPast(ctx *gin.Context) {
 	var filter WeatherInfoFilter
 	if err := ctx.BindJSON(&filter); err != nil {
 		return
