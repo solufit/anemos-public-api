@@ -24,7 +24,7 @@ func (s *Server) Run(ctx context.Context) error {
 	{
 		weatherHandler := weather.NewWeatherHandler()
 		v1.POST("/weather/info", weatherHandler.GetWeatherInfoNear)
-		v1.POST("/weather/info/past", weatherHandler.GetWeatherInfoPast)
+		v1.POST("/weather/info/past", weatherHandler.PostWeatherInfoPast)
 	}
 
 	err := r.Run()
