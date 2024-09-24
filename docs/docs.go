@@ -24,14 +24,14 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "version"
+                    "weather"
                 ],
-                "summary": "バージョン管理",
+                "summary": "気象情報",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/version.Response"
+                            "$ref": "#/definitions/version.WeatherInfo"
                         }
                     }
                 }
@@ -39,10 +39,40 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "version.Response": {
+        "internal_service_version.Response": {
             "type": "object",
             "properties": {
                 "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "version.WeatherInfo": {
+            "type": "object",
+            "properties": {
+                "areacode": {
+                    "type": "string"
+                },
+                "detail": {},
+                "id": {
+                    "type": "string"
+                },
+                "info_domain": {
+                    "type": "string"
+                },
+                "info_objectId": {
+                    "type": "string"
+                },
+                "object_type": {
+                    "type": "string"
+                },
+                "reported_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
                     "type": "string"
                 }
             }

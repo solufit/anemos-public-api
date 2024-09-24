@@ -1,7 +1,27 @@
 definitions:
-  version.Response:
+  internal_service_version.Response:
     properties:
       status:
+        type: string
+    type: object
+  version.WeatherInfo:
+    properties:
+      areacode:
+        type: string
+      detail: {}
+      id:
+        type: string
+      info_domain:
+        type: string
+      info_objectId:
+        type: string
+      object_type:
+        type: string
+      reported_at:
+        type: string
+      status:
+        type: string
+      title:
         type: string
     type: object
 host: localhost:8080
@@ -22,8 +42,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/version.Response'
-      summary: バージョン管理
+            $ref: '#/definitions/version.WeatherInfo'
+      summary: 気象情報
       tags:
-      - version
+      - weather
 swagger: "2.0"
