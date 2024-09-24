@@ -74,10 +74,11 @@ type WeatherInfo struct {
 // @Accept json
 // @Produce json
 // @Success 200 {object} WeatherInfo
-// @Router /v1/weather/info [get]
-func (h *WeatherHandler) GetWeatherInfoNear(ctx *gin.Context) {
+// @Router /v1/weather/info [post]
+func (h *WeatherHandler) PostWeatherInfoNear(ctx *gin.Context) {
 	var filter WeatherInfoFilter
-	if err := ctx.BindJSON(&filter); err != nil {
+	if err := ctx.ShouldBindJSON(&filter); err != nil {
+		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, Response{Status: "Validation error -> " + err.Error()})
 		return
 	}
 
@@ -115,13 +116,14 @@ func (h *WeatherHandler) GetWeatherInfoNear(ctx *gin.Context) {
 // @Accept json
 // @Produce json
 // @Success 200 {object} WeatherInfo
-// @Router /v1/weather/info/past [get]
-func (h *WeatherHandler) GetWeatherInfoPast(ctx *gin.Context) {
+// @Router /v1/weather/info/past [post]
+func (h *WeatherHandler) PostWeatherInfoPast(ctx *gin.Context) {
 	var filter WeatherInfoFilter
-	if err := ctx.BindJSON(&filter); err != nil {
+
+	if err := ctx.ShouldBindJSON(&filter); err != nil {
+		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"error": err.Error()})
 		return
 	}
-
 	var weatherinfo = []WeatherInfo{
 		{
 			ID:         "1",
