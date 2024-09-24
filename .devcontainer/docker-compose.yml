@@ -12,8 +12,6 @@ services:
     environment:
       - GO111MODULE=on
       - DATABASE_URL=mysql://root:root@db:3306/test
-    ports:
-      - 8080:8080
 
   swagger-ui:
     image: swaggerapi/swagger-ui
@@ -21,8 +19,6 @@ services:
       - ./../docs/swagger.yaml:/openapi.yaml
     environment:
       SWAGGER_JSON: /openapi.yaml
-    ports:
-      - 8000:8080
   
   db:
     image: mariadb
