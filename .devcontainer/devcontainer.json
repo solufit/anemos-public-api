@@ -17,6 +17,23 @@
 		}
 	},
 	"postCreateCommand": "go install github.com/swaggo/swag/cmd/swag@latest && go install github.com/xo/xo@latest && go install github.com/amacneil/dbmate@latest &&  go install golang.org/x/tools/cmd/goimports@latest && go mod tidy",
-	"forwardPorts": [6080, 8080]
+	"forwardPorts": [
+		"swagger-ui:8000",
+		"db:3306"
+	],
+	"portsAttributes": {
+		"8080": {
+			"label": "Go Main API",
+			"onAutoForward": "notify"
+		},
+		"swagger-ui:8000": {
+			"label": "Swagger UI",
+			"onAutoForward": "notify"
+		},
+		"db:3306": {
+			"label": "MariaDB",
+			"onAutoForward": "notify"
+		}
+	}
 }
 
