@@ -75,7 +75,7 @@ type WeatherInfo struct {
 // @Produce json
 // @Success 200 {object} WeatherInfo
 // @Router /v1/weather/info [post]
-func (h *WeatherHandler) GetWeatherInfoNear(ctx *gin.Context) {
+func (h *WeatherHandler) PostWeatherInfoNear(ctx *gin.Context) {
 	var filter WeatherInfoFilter
 	if err := ctx.ShouldBindJSON(&filter); err != nil {
 		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, Response{Status: "Validation error -> " + err.Error()})
