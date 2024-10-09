@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	libanemos "github.com/solufit/anemos-public-api-library"
 )
 
 type WeatherHandler struct{}
@@ -81,32 +82,8 @@ func (h *WeatherHandler) PostWeatherInfoNear(ctx *gin.Context) {
 		ctx.AbortWithStatusJSON(http.StatusUnprocessableEntity, Response{Status: "Validation error -> " + err.Error()})
 		return
 	}
-
-	var weatherinfo = []WeatherInfo{
-		{
-			ID:         "1",
-			ObjectType: "weather",
-			Areacode:   "123-4567",
-			Title:      "気象情報",
-			Status:     "success",
-			Detail: DetailWeatherForecast{
-				WeatherToday:    "晴れ",
-				WeatherTomorrow: "晴れ",
-
-				MaxTemp:        30,
-				MinTemp:        20,
-				RainPercentNow: 0,
-				RainPercent6h:  0,
-				RainPercent12h: 0,
-				RainPercent18h: 0,
-				RainPercent24h: 0,
-			},
-			ReportedAt:   "2024-09-19",
-			InfoDomain:   "weather",
-			InfoObjectId: "1",
-		},
-	}
-
+	anemosDataInstance := libanemos.NewAnemosGet()
+	var weatherinfo = anemosDataInstance.Data
 	ctx.IndentedJSON(http.StatusOK, weatherinfo)
 }
 
