@@ -87,48 +87,6 @@ func (h *WeatherHandler) PostWeatherInfoNear(ctx *gin.Context) {
 	ctx.IndentedJSON(http.StatusOK, weatherinfo)
 }
 
-// Version godoc
-// @Summary 気象情報
-// @Tags weather
-// @Accept json
-// @Produce json
-// @Success 200 {object} WeatherInfo
-// @Router /v1/weather/info/past [post]
-func (h *WeatherHandler) PostWeatherInfoPast(ctx *gin.Context) {
-	var filter WeatherInfoFilter
-
-	if err := ctx.ShouldBindJSON(&filter); err != nil {
-		ctx.JSON(http.StatusUnprocessableEntity, gin.H{"error": err.Error()})
-		return
-	}
-	var weatherinfo = []WeatherInfo{
-		{
-			ID:         "1",
-			ObjectType: "weather",
-			Areacode:   "123-4567",
-			Title:      "気象情報",
-			Status:     "success",
-			Detail: DetailWeatherForecast{
-				WeatherToday:    "晴れ",
-				WeatherTomorrow: "晴れ",
-
-				MaxTemp:        30,
-				MinTemp:        20,
-				RainPercentNow: 0,
-				RainPercent6h:  0,
-				RainPercent12h: 0,
-				RainPercent18h: 0,
-				RainPercent24h: 0,
-			},
-			ReportedAt:   "2024-09-19",
-			InfoDomain:   "weather",
-			InfoObjectId: "1",
-		},
-	}
-
-	ctx.IndentedJSON(http.StatusOK, weatherinfo)
-}
-
 func NewWeatherHandler() *WeatherHandler {
 	return &WeatherHandler{}
 }
