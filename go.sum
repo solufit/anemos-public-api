@@ -99,6 +99,8 @@ github.com/redis/go-redis/v9 v9.6.1 h1:HHDteefn6ZkTtY5fGUE8tj8uy85AHk6zP7CpzIAM0
 github.com/redis/go-redis/v9 v9.6.1/go.mod h1:0C0c6ycQsdpVNQpxb1njEQIqkx5UcsM8FJCQLgE9+RA=
 github.com/solufit/anemos-public-api-library v0.3.0-alpha h1:zkHBM1bpTCKcmSurJS+InaB6u9fdXgBPzBfxST8ld0A=
 github.com/solufit/anemos-public-api-library v0.3.0-alpha/go.mod h1:3GtNFRPeLK2sGEkkW0nwIUqTlI9Wz+eVoA9/oJphDTw=
+github.com/solufit/anemos-public-api-library v0.3.1-alpha h1:gCcmHYJGeCKB7V1mWEIhWCk1tnS2t805t1OXBm3WT3E=
+github.com/solufit/anemos-public-api-library v0.3.1-alpha/go.mod h1:3GtNFRPeLK2sGEkkW0nwIUqTlI9Wz+eVoA9/oJphDTw=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=
